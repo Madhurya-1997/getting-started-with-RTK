@@ -3,21 +3,26 @@ import React from 'react';
 import { selectAllPosts } from "./postsSlice";
 import { selectAllUsers } from "../users/usersSlice";
 import PostAuthor from "./PostAuthor";
+import TimeAgo from "./TimeAgo";
+import Reaction from "./Reaction";
 
 const PostsList = () => {
     const posts = useSelector(selectAllPosts);
-    const users = useSelector(selectAllUsers);
+
+    const orderedPosts = posts.slice().sort((a, b) => b.now.localeCompare(a.now));
 
     return (
         <section>
             <h2>Posts</h2>
-            {posts.map(({ id, title, content, userId }) => {
+            {orderedPosts.map((post) => {
                 return (
-                    <article key={id}>
-                        <h3>{title}</h3>
-                        <p>{content.substring(0, 100)}</p>
+                    <article key={post.id}>
+                        <h3>{post.title}</h3>
+                        <p>{post.content.substring(0, 100)}</p>
                         <div className="postCredit">
-                            <PostAuthor userId={userId} />
+                            <PostAuthor userId={post.userId} />
+                            <TimeAgo timestamp={post.now} />
+                            <Reaction post={post} />
                         </div>
 
                     </article>
