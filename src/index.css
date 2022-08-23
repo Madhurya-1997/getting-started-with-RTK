@@ -77,9 +77,9 @@ form {
   background: transparent;
   border: none;
   color: whitesmoke;
+  font-size: 15px;
 }
 
 .reactionButton:hover {
   border: none;
-  border-bottom: 1px solid whitesmoke;
 }

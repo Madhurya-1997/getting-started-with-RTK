@@ -33,7 +33,7 @@ const Reaction = ({ post }) => {
     })
 
     return (
-        <div style={{ margin: '1em 0 0 0' }}>{reactionButtons}</div>
+        <div>{reactionButtons}</div>
     )
 }
 
