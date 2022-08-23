@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { postsAdded } from './postsSlice'
 import { selectAllUsers } from '../users/usersSlice'
+import { sub } from 'date-fns'
 
 const AddPostForm = () => {
     const users = useSelector(selectAllUsers);
